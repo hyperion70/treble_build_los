@@ -1,0 +1,29 @@
+From 85530f3c672f19fabd3273d88948367e804cf3b2 Mon Sep 17 00:00:00 2001
+From: hyperion70 <bmaximov71@gmail.com>
+Date: Thu, 21 May 2020 21:04:30 +0300
+Subject: [PATCH] frameworks_base_services_PhoneWindowManager
+
+Change-Id: Ic37c49216092af37e84c24f1e2e6c73334a52ddb
+---
+ services/core/java/com/android/server/policy/PhoneWindowManager.java | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/services/core/java/com/android/server/policy/PhoneWindowManager.java b/services/core/java/com/android/server/policy/PhoneWindowManager.java
+index e51bd6d..e81c91f 100644
+--- a/services/core/java/com/android/server/policy/PhoneWindowManager.java
++++ b/services/core/java/com/android/server/policy/PhoneWindowManager.java
+@@ -4481,10 +4481,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+ 
+             case KeyEvent.KEYCODE_HOME:
+                 if (down && !interactive) {
+-                    isWakeKey = mHomeWakeScreen;
+-                    if (!isWakeKey) {
+-                        useHapticFeedback = false;
+-                    }
++                    isWakeKey = true;
+                 }
+                 break;
+ 
+-- 
+2.7.4
+
