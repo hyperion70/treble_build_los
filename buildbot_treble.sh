@@ -28,10 +28,6 @@ cd frameworks/base
 git am $BL/patches/0001-Squashed-revert-of-LOS-FOD-implementation.patch
 cd ../..
 rm -f device/*/sepolicy/common/private/genfs_contexts
-cd device/phh/treble
-git clean -fdx
-bash generate.sh lineage
-cd ../../..
 bash ~/treble_experimentations/apply-patches.sh treble_patches
 echo ""
 
@@ -56,14 +52,6 @@ echo "Applying GSI-specific patches"
 cd build/make
 git am $BL/patches/0001-build-Don-t-handle-apns-conf.patch
 cd ../..
-cd device/phh/treble
-git revert 82b15278bad816632dcaeaed623b569978e9840d --no-edit # Update lineage.mk for LineageOS 16.0
-git am $BL/patches/0001-Remove-fsck-SELinux-labels.patch
-git am $BL/patches/0001-treble-Add-overlay-lineage.patch
-git am $BL/patches/0001-treble-Don-t-specify-config_wallpaperCropperPackage.patch
-git am $BL/patches/0001-Increase-system-partition-size-for-arm_ab.patch
-git am $BL/patches/0001-TEMP-treble-Fix-init.treble-environ.rc-hardcode-for-.patch
-cd ../../..
 cd external/tinycompress
 git revert 82c8fbf6d3fb0a017026b675adf2cee3f994e08a --no-edit # tinycompress: Use generated kernel headers
 cd ../..
@@ -100,12 +88,7 @@ buildVariant() {
 	mv $OUT/system.img ~/build-output/lineage-17.1-$BUILD_DATE-UNOFFICIAL-${1}.img
 }
 
-buildVariant treble_arm_avN
-buildVariant treble_arm_bvN
-buildVariant treble_a64_avN
-buildVariant treble_a64_bvN
-buildVariant treble_arm64_avN
-buildVariant treble_arm64_bvN
+buildVariant treble_arm64_bgN
 ls ~/build-output | grep 'lineage'
 
 END=`date +%s`
