@@ -70,6 +70,8 @@ git revert d12551bf1a6e8a9ece6bbb98344a27bde7f9b3e1 --no-edit # sepolicy: Relabe
 cd ../..
 cd vendor/lineage
 git am $BL/patches/0001-build_soong-Disable-generated_kernel_headers.patch
+cd ../hardware_overlay
+git am $BL/patches/0001-phh_hardware_overlay.patch
 cd ../..
 echo ""
 
