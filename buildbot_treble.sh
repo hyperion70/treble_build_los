@@ -23,10 +23,19 @@ echo "Setting up build environment"
 source build/envsetup.sh &> /dev/null
 echo ""
 
-echo "Applying PHH patches"
+echo "Reverting LOS FOD implementation"
 cd frameworks/base
 git am $BL/patches/0001-Squashed-revert-of-LOS-FOD-implementation.patch
 cd ../..
+cd frameworks/native
+git revert 470dde656e0ee547f78ac403a6f959e1438c2158 --no-edit # surfaceflinger: Add support for extension lib
+cd ../..
+cd vendor/lineage
+git revert 612c5a846ea5aed339fe1275c119ee111faae78c --no-edit # soong: Add flag for fod extension
+cd ../..
+echo ""
+
+echo "Applying PHH patches"
 rm -f device/*/sepolicy/common/private/genfs_contexts
 bash ~/treble_experimentations/apply-patches.sh treble_patches
 echo ""

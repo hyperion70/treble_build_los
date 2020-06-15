@@ -1,16 +1,39 @@
-From b22b04f45b8642a17ce343b9db915c887b4d3928 Mon Sep 17 00:00:00 2001
+From 5347ef6c3fc99367c41941dc0e3911383e30d61b Mon Sep 17 00:00:00 2001
 From: hyperion70 <bmaximov71@gmail.com>
-Date: Wed, 27 May 2020 13:59:34 +0300
+Date: Mon, 15 Jun 2020 08:46:06 +0300
 Subject: [PATCH] phh_hardware_overlay
 
-Change-Id: I47d0dce7584698d25095c4f1269a03f084c1af82
 ---
+ TrebleApp/Android.mk                   |  18 +---
  Xiaomi/Mi8SE/res/values/config.xml     | 171 +++++++++++----------------------
  Xiaomi/Mi8SE/res/values/notch.xml      |  27 ------
- Xiaomi/Mi8SE/res/xml/power_profile.xml | 169 +++++++++++++-------------------
- 3 files changed, 125 insertions(+), 242 deletions(-)
+ Xiaomi/Mi8SE/res/xml/power_profile.xml | 165 +++++++++++++------------------
+ 4 files changed, 128 insertions(+), 253 deletions(-)
  delete mode 100644 Xiaomi/Mi8SE/res/values/notch.xml
 
+diff --git a/TrebleApp/Android.mk b/TrebleApp/Android.mk
+index 5acae71..404dcd3 100644
+--- a/TrebleApp/Android.mk
++++ b/TrebleApp/Android.mk
+@@ -1,13 +1,5 @@
+-LOCAL_PATH := $(my-dir)
+-
+-include $(CLEAR_VARS)
+-
+-LOCAL_MODULE := TrebleApp
+-LOCAL_SRC_FILES := app.apk
+-LOCAL_MODULE_CLASS := APPS
+-LOCAL_MODULE_SUFFIX := .apk
+-LOCAL_BUILT_MODULE_STEM := package.apk
+-LOCAL_CERTIFICATE := platform
+-LOCAL_PRIVILEGED_MODULE := true
+-
+-include $(BUILD_PREBUILT)
++####################################################
++#
++#       Move to device
++#
++####################################################
 diff --git a/Xiaomi/Mi8SE/res/values/config.xml b/Xiaomi/Mi8SE/res/values/config.xml
 index c6f5c82..9a95490 100644
 --- a/Xiaomi/Mi8SE/res/values/config.xml
@@ -224,12 +247,12 @@ index ab0425b..0000000
 -    <dimen name="rounded_corner_radius">48px</dimen>
 -</resources>
 diff --git a/Xiaomi/Mi8SE/res/xml/power_profile.xml b/Xiaomi/Mi8SE/res/xml/power_profile.xml
-index 0d127f6..8ae8d25 100644
+index 0d127f6..8ca1e9b 100644
 --- a/Xiaomi/Mi8SE/res/xml/power_profile.xml
 +++ b/Xiaomi/Mi8SE/res/xml/power_profile.xml
 @@ -1,100 +1,69 @@
--<?xml version="1.0" encoding="utf-8"?>
--<device name="Android">
+ <?xml version="1.0" encoding="utf-8"?>
+ <device name="Android">
 -    <item name="none">0</item>
 -    <item name="screen.on">64.19</item>
 -    <item name="screen.full">108.3</item>
@@ -328,8 +351,6 @@ index 0d127f6..8ae8d25 100644
 -        <value>2</value>
 -    </array>
 -</device>
-+<?xml version="1.0" encoding="utf-8"?>
-+<device name="Android">
 +  <item name="ambient.on">10</item>  <!-- ~100mA -->
 +  <item name="screen.on">97</item>  <!-- ~100mA -->
 +  <item name="screen.full">220</item>  <!-- ~100mA -->
