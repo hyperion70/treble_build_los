@@ -28,7 +28,7 @@ cd frameworks/base
 git am $BL/patches/0001-Squashed-revert-of-LOS-FOD-implementation.patch
 cd ../..
 cd frameworks/native
-git revert 470dde656e0ee547f78ac403a6f959e1438c2158 --no-edit # surfaceflinger: Add support for extension lib
+git am $BL/patches/0001-Revert-surfaceflinger-Add-support-for-extension-lib.patch
 cd ../..
 cd vendor/lineage
 git revert 612c5a846ea5aed339fe1275c119ee111faae78c --no-edit # soong: Add flag for fod extension
